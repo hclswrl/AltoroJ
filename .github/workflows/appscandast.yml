@@ -1,0 +1,25 @@
+name: "HCL AppScan DAST - basic"
+on:
+  workflow_dispatch
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run ASoC DAST Scan
+        uses: HCL-TECH-SOFTWARE/appscan-dast-action@v1.0.7
+        with:
+          baseurl:  https://cloud.appscan.com
+          asoc_key: ${{secrets.ASOC_KEY}}
+          asoc_secret: ${{secrets.ASOC_SECRET}}
+          application_id: c88f96a3-284b-409c-a5b7-0b6863b184a1
+          dynamic_scan_type: dast
+          starting_URL: 'https://demo.testfire.net?mode=demo'
+          login_method: userpass
+          login_user: jsmith
+          login_password: demo1234
+          network: public
+          fail_for_noncompliance: false
+          wait_for_analysis: true
+      - uses: actions/upload-artifact@v4
