@@ -1,7 +1,10 @@
 name: "HCL AppScan SAST"
 on:
   pull_request:
-    branches: [ "master" ]
+    types: [opened, reopened, synchronize]
+    branches: [ "Altoro-3.4" ]
+permissions:
+  contents: read
 jobs:
   scan:
     runs-on: ubuntu-latest
