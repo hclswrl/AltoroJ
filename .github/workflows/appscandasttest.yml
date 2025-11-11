@@ -23,3 +23,8 @@ jobs:
           fail_for_noncompliance: false
           wait_for_analysis: true
       - uses: actions/upload-artifact@v4
+        name: Upload HCL AppScan HTML Report to Github Artifacts
+        with:
+          name: AppScan Security Scan HTML Report 
+          path: '**/AppScan*.html'
+        if: success() || failure()
