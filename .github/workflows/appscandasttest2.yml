@@ -1,4 +1,4 @@
-name: "HCL AppScan DAST - basic"
+name: "HCL AppScan DAST - basic w/o artifacts"
 on:
   workflow_dispatch
 jobs:
